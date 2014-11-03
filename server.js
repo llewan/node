@@ -12,6 +12,8 @@ app.get('/', function (req, res){
 });
 
 app.use('/js', express.static(__dirname + '/client/js'));
+// set the static files location /public/img will be /img for users
+app.use(express.static(__dirname + '/client')); 
 
 // REST API
 app.get('/api/advices', advicesController.list );

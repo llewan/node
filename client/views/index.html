@@ -1,40 +1,83 @@
 <!DOCTYPE html>
-<html ng-app="adviceApp">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>mi barrio</title>
-    <meta name="description" content="">
-  </head>
-  <body>
-  	
-  	<div ng-controller="advicesController">
-     <h1>there are {{ advices.length }} advices</h1>
-     <ul>
-       <li ng-repeat="advice in advices"> 
-       	<h4>{{ advice.title }} </h4>
-       	<p>{{ advice.description }} </p>
-       </li>
-     </ul>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>miBarrio</title>
 
-     <form ng-submit="createAdvice()">
-     	<div>
-	     	<input type="text" placeholder="Title" ng-model="adviceForm.title">
-     	</div>
-     	<div>
-	     	<input type="text" placeholder="Description" ng-model="adviceForm.description">
-     	</div>
-     	<div>
-	     	<button type="submit">Add</button>
-     	</div>
-     </form>	
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <!-- endbower -->
 
-    </div>
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-resource.js"></script>
+    </head>
+    <body ng-controller="advicesController">
+     <div class="container">
+
+      <div class="header">
+        <ul class="nav nav-pills pull-right" role="tablist">
+          <li role="presentation" class="active"><a href="#">Home</a></li>
+          <li role="presentation"><a href="#">About</a></li>
+          <li role="presentation"><a href="#">Contact</a></li>
+        </ul>
+        <h3 class="text-muted">Mi Barrio</h3>
+      </div>
+
+      
+      <h1>there are {{ advices.length }} advices</h1>
+
+      <ul>
+        <li ng-repeat="advice in advices"> 
+        {{ advice.title }} </br>
+        {{ advice.description }} 
+        </li>
+      </ul>
+
+    <form ng-submit="createAdvice()" role="form" class="well">
+      <h3>Create advise</h3>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Title" ng-model="adviceForm.title">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Description" ng-model="adviceForm.description">
+      </div>
+      <div>
+        <button type="submit" class="btn btn-default">Add</button>
+      </div>
+    </form>
+
+  </div>
+
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-resource.js"></script>-->
     
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/purl/purl.js"></script>
+    <script src="bower_components/lodash/dist/lodash.js"></script>
+    <!-- endbower -->
+
     <script type="text/javascript" src="/js/app.js"></script>
     <script type="text/javascript" src="/js/controllers/advices-controller.js"></script>
+
+    <script type="text/javascript">
+    angular.element(document).ready(function() {
+      'use strict';
+      angular.bootstrap(document, ['adviceApp']);
+    });
+    </script>
+
   </body>
-</html>
+  </html>
